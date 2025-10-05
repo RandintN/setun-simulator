@@ -19,7 +19,7 @@ This repository contains a browser-based simulator (emulator UI) of the Soviet t
 - A modern web browser (Chrome, Firefox, Edge, Safari). No installation required.
 - Optional: A local static HTTP server if you prefer serving files instead of opening `index.html` directly.
 
-### Setup and Run
+### Setup and Run locally, only if you want to
 - Quick start (open from filesystem):
   - Double‑click `index.html` or open it in your browser.
 - Serve with a simple static server (optional examples):
@@ -36,37 +36,17 @@ There is no package.json or build system. The term "scripts" here refers to runt
 
 ### Environment Variables
 - None required for running the static site.
-- TODO: Document any optional configuration flags if they are added in the future.
-
-### Tests
-- No automated tests are present in this repository.
-- TODO: Consider adding basic UI tests (e.g., with Playwright) and unit tests for the emulator logic.
-
-### Project Structure
-```
-C:/Coding/setun-simulator
-├─ css/
-│  └─ styles.css
-├─ js/
-│  └─ main.js
-├─ index.html
-├─ robots.txt
-├─ site.webmanifest
-├─ setun-simulator.iml
-└─ setun-simulator.zip   (archive; not used by the site at runtime)
-```
 
 ### Development Notes
-- The app is fully client‑side. All logic is in `js/main.js` and UI in `index.html` with styles in `css/styles.css`.
-- The footer mentions "License MIT Robson Cassiano"; however, no `LICENSE` file is present at the root.
+- The app is fully client‑side. All logic is in `js/main.js` and UI in `index.html`, with styles in `css/styles.css`.
 
 ### License
-- MIT is indicated in the footer of `index.html` ("License MIT Robson Cassiano").
-- TODO: Add a standard `LICENSE` file with the MIT text and the appropriate copyright holder.
+- MIT License (see the `LICENSE` file at the repository root).
 
 ---
 
 ## Português (PT-BR)
+Site ao vivo: https://randintn.github.io/setun-simulator/
 
 ### Visão Geral
 - Propósito: Fornecer um simulador interativo e educacional do computador ternário Setun, com componentes de UI para registradores, botões/chaves de controle, visão de memória e dispositivos simples de E/S (FT‑1, FT‑2 e painel de impressora).
@@ -79,7 +59,7 @@ C:/Coding/setun-simulator
 - Um navegador moderno (Chrome, Firefox, Edge, Safari). Não é necessária instalação.
 - Opcional: Um servidor HTTP estático local, caso prefira servir os arquivos em vez de abrir `index.html` diretamente.
 
-### Configuração e Execução
+### Configuração e Execução local, se voce quiser.
 - Início rápido (abrindo do sistema de arquivos):
   - Dê duplo clique em `index.html` ou abra o arquivo no seu navegador.
 - Servir com um servidor estático simples (exemplos opcionais):
@@ -96,30 +76,9 @@ Não há `package.json` nem sistema de build. Aqui, "scripts" refere‑se às a�
 
 ### Variáveis de Ambiente
 - Nenhuma é necessária para executar o site estático.
-- TODO: Documentar flags de configuração opcionais, caso venham a ser adicionadas.
-
-### Testes
-- Este repositório não possui testes automatizados.
-- TODO: Considerar adicionar testes básicos de UI (por exemplo, com Playwright) e testes unitários da lógica do emulador.
-
-### Estrutura do Projeto
-```
-C:/Coding/setun-simulator
-├─ css/
-│  └─ styles.css
-├─ js/
-│  └─ main.js
-├─ index.html
-├─ robots.txt
-├─ site.webmanifest
-├─ setun-simulator.iml
-└─ setun-simulator.zip   (arquivo; não é usado pelo site em tempo de execução)
-```
 
 ### Notas de Desenvolvimento
 - O aplicativo é totalmente client‑side. Toda a lógica está em `js/main.js` e a UI em `index.html`, com estilos em `css/styles.css`.
-- O rodapé menciona "License MIT Robson Cassiano"; contudo, não há arquivo `LICENSE` na raiz.
 
 ### Licença
-- MIT é indicado no rodapé do `index.html` ("License MIT Robson Cassiano").
-- TODO: Adicionar um arquivo `LICENSE` com o texto padrão da MIT e o titular de direitos apropriado.
+- Licença MIT (consulte o arquivo `LICENSE` na raiz do repositório).
