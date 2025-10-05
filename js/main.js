@@ -1,3 +1,9 @@
+/*
+  Setun Simulator (Setun VS)
+  License: MIT (see LICENSE file)
+  Copyright (c) 2025 Robson Cassiano
+*/
+
 document.addEventListener('DOMContentLoaded', () => {
   // --- Theme Switcher Logic ---
   const themeToggleBtn = document.getElementById('theme-toggle');
@@ -373,7 +379,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const labelText = this.translations[this.currentLang][langKey] || langKey;
         const displayName = (name === 'W' || name === 'MB') ? '' : ` (${name})`;
         return `<div class="component indicator-component" id="indicator-${name.toLowerCase()}">
-                                <div class="component-label" data-lang-key="${langKey}">${labelText}${displayName}</div>
+                                <div class="component-label" data-lang-key="${langKey}">${labelText}${displayName} ${ name==='S' ? '<span class="digital-display" id="display-s">0</span>' : (name==='K' ? '<span class="digital-display" id="display-k">---</span>' : '') }</div>
                                 <div class="indicator-row">${indicatorsHTML}</div>
                             </div>`;
       };
@@ -526,6 +532,21 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         }
       });
+
+      // Update digital displays for S and K
+      const sDisplay = document.getElementById('display-s');
+      if (sDisplay) {
+        const sDecimal = this.tritArrayToNumber(this.registers.S);
+        sDisplay.textContent = sDecimal.toString();
+      }
+
+      const kDisplay = document.getElementById('display-k');
+      if (kDisplay) {
+        const opcodeTrits = this.registers.K.slice(0, 3);
+        const opcodeStr = opcodeTrits.map(t => t === 1 ? '+' : (t === -1 ? '-' : '0')).join('');
+        const name = this.getOpcodeName(opcodeStr);
+        kDisplay.textContent = name ? `${name} (${opcodeStr})` : opcodeStr;
+      }
     },
 
     logMessage(key, params = {}) {
@@ -770,6 +791,30 @@ document.addEventListener('DOMContentLoaded', () => {
         arr[i] = rem;
       }
       return arr;
+    },
+
+    getOpcodeName(opcodeStr) {
+      const map = {
+        '+00': 'opName_30',
+        '+0+': 'opName_33',
+        '+0-': 'opName_3x',
+        '++0': 'opName_40',
+        '+++': 'opName_43',
+        '++-': 'opName_4x',
+        '+-0': 'opName_20',
+        '+-+': 'opName_23',
+        '+--': 'opName_2x',
+        '0+0': 'opName_10',
+        '0++': 'opName_13',
+        '0+-': 'opName_1x',
+        '000': 'opName_00',
+        '-00': 'opName_x0',
+        '-++': 'opName_y3',
+        '---': 'opName_zhx'
+      };
+      const key = map[opcodeStr];
+      if (!key) return null;
+      return this.translations[this.currentLang][key] || null;
     },
 
     executeRemoteCommand() {

@@ -1,5 +1,6 @@
 # www.robotstxt.org/
+# Project: Setun Simulator (GitHub Pages static site)
 
 # Allow crawling of all content
 User-agent: *
-Disallow:
+Allow: /
