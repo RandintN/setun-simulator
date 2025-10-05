@@ -151,7 +151,9 @@ document.addEventListener('DOMContentLoaded', () => {
       logHaltInstruction: "PC {pc}: Halt instruction found. Final value in S: {value}",
       logUnknown: "PC {pc}: Unknown instruction {opcode}",
       logRemote: "Executing remote command...",
-      logRemoteExec: "Remote command {opcode} with operand {operand} executed."
+      logRemoteExec: "Remote command {opcode} with operand {operand} executed.",
+      footerLicense: "MIT License Robson Cassiano",
+      footerMotto: "Live Long and Prosper 🖖🏻"
     },
     pt: {
       mainTitle: "Setun Emulador do Computador Ternário",
