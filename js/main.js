@@ -301,6 +301,12 @@ document.addEventListener('DOMContentLoaded', () => {
     translations: translations,
 
     init() {
+      // Initialize language from URL query parameter (?lang=en-us or ?lang=pt-br)
+      const urlLang = this.getLangFromUrl();
+      if (urlLang) {
+        this.currentLang = urlLang;
+      }
+
       this.buildUI();
       this.attachEventListeners();
       this.setLanguage(this.currentLang); // This will re-build and re-attach
@@ -332,9 +338,36 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     },
 
+    // Read and normalize language from URL (?lang=en-us|pt-br|en|pt)
+    getLangFromUrl() {
+      try {
+        const params = new URLSearchParams(window.location.search);
+        const raw = (params.get('lang') || '').toLowerCase();
+        if (["en", "en-us", "en_us", "en-gb", "en-uk"].includes(raw)) return 'en';
+        if (["pt", "pt-br", "pt_br", "pt-pt"].includes(raw)) return 'pt';
+        return null;
+      } catch (_) {
+        return null;
+      }
+    },
+
+    // Update the URL query parameter to reflect the chosen language without reloading
+    updateLangInUrl(lang) {
+      try {
+        const params = new URLSearchParams(window.location.search);
+        // Use explicit locale in URL as per requirement examples
+        params.set('lang', lang === 'pt' ? 'pt-br' : 'en-us');
+        const newUrl = `${window.location.pathname}?${params.toString()}${window.location.hash}`;
+        window.history.replaceState({}, '', newUrl);
+      } catch (_) {
+        // noop if URL manipulation fails
+      }
+    },
+
+    // Normalize and apply language; also reflect it in document.lang
     setLanguage(lang) {
       this.currentLang = lang;
-      document.documentElement.lang = lang === 'pt' ? 'pt-BR' : lang;
+      document.documentElement.lang = (lang === 'pt') ? 'pt-BR' : 'en-US';
 
       document.querySelectorAll('[data-lang-key]').forEach(el => {
         const key = el.dataset.langKey;
@@ -462,8 +495,8 @@ document.addEventListener('DOMContentLoaded', () => {
     attachEventListeners() {
       const container = document.getElementById('setun-emulator');
 
-      document.getElementById('lang-en').addEventListener('click', () => this.setLanguage('en'));
-      document.getElementById('lang-pt').addEventListener('click', () => this.setLanguage('pt'));
+      document.getElementById('lang-en').addEventListener('click', () => { this.updateLangInUrl('en'); this.setLanguage('en'); });
+      document.getElementById('lang-pt').addEventListener('click', () => { this.updateLangInUrl('pt'); this.setLanguage('pt'); });
 
       container.querySelector('#btn-initial-start').addEventListener('click', () => this.initialStart());
       container.querySelector('#btn-start').addEventListener('click', () => this.run());
