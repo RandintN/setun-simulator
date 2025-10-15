@@ -1,6 +1,6 @@
 # Setun Simulator (Setun VS)
 
-Live site: https://randintn.github.io/setun-simulator/
+Live site: https://randintn.github.io/setun-simulator/?lang=en-us
 
 This repository contains a browser-based simulator (emulator UI) of the Soviet ternary computer Setun (MCVM), implemented as a static web application using HTML, CSS, and vanilla JavaScript.
 
@@ -46,7 +46,7 @@ There is no package.json or build system. The term "scripts" here refers to runt
 ---
 
 ## Português (PT-BR)
-Site ao vivo: https://randintn.github.io/setun-simulator/
+Site ao vivo: https://randintn.github.io/setun-simulator/?lang=pt-br
 
 ### Visão Geral
 - Propósito: Fornecer um simulador interativo e educacional do computador ternário Setun, com componentes de UI para registradores, botões/chaves de controle, visão de memória e dispositivos simples de E/S (FT‑1, FT‑2 e painel de impressora).
