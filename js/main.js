@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const translations = {
     en: {
-      mainTitle: "Setun Ternary Computer Emulator",
+      mainTitle: "Setun Ternary Computer Simulator",
       aboutTitle: "About Setun",
       componentsTitle: "Main Components",
       instructionsTitle: "Instruction Set",
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
       step: "Step",
       stop: "Stop",
       remoteCmd: "Remote Command",
-      aboutText: `"Setun VS" is an emulator of the Setun MCVM (a Soviet ternary computer). The main elements are RAM, registers, a control panel, and peripheral input (FT-1, FT-2) and output (EUM-46) devices.`,
+      aboutText: `"Setun VS" is a simulator of the Setun MCVM (a Soviet ternary computer). The main elements are RAM, registers, a control panel, and peripheral input (FT-1, FT-2) and output (EUM-46) devices.`,
       registersLabel: "Registers:",
       registersDesc: "Display the internal state of the machine.",
       regSLabel: "S (Result):",
@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
       footerMotto: "Live Long and Prosper 🖖🏻"
     },
     pt: {
-      mainTitle: "Setun Emulador do Computador Ternário",
+      mainTitle: "Setun Simulador do Computador Ternário",
       aboutTitle: "Sobre o Setun",
       componentsTitle: "Componentes Principais",
       instructionsTitle: "Conjunto de Instruções",
@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
       step: "Passo",
       stop: "Parar",
       remoteCmd: "Comando Remoto",
-      aboutText: `"Setun VS" é um emulador do Setun MCVM, um computador ternário soviético. Os principais elementos são RAM, registradores, painel de controle e dispositivos periféricos de entrada (FT-1, FT-2) e saída (EUM-46).`,
+      aboutText: `"Setun VS" é um simulador do Setun MCVM, um computador ternário soviético. Os principais elementos são RAM, registradores, painel de controle e dispositivos periféricos de entrada (FT-1, FT-2) e saída (EUM-46).`,
       registersLabel: "Registradores:",
       registersDesc: "Exibem o estado interno da máquina.",
       regSLabel: "S (Resultado):",

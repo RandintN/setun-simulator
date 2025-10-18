@@ -2,7 +2,7 @@
 
 Live site: https://randintn.github.io/setun-simulator/?lang=en-us
 
-This repository contains a browser-based simulator (emulator UI) of the Soviet ternary computer Setun (MCVM), implemented as a static web application using HTML, CSS, and vanilla JavaScript.
+This repository contains a browser-based simulator (simulator UI) of the Soviet ternary computer Setun (MCVM), implemented as a static web application using HTML, CSS, and vanilla JavaScript.
 
 ---
 
