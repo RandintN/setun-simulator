@@ -75,7 +75,13 @@ body {
   z-index: 100;
 }
 
-.language-switcher, .theme-switcher {
+.right-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.language-switcher, .theme-switcher, .github-button, .icon-button {
   background: var(--panel-bg);
   padding: 5px 10px;
   border-radius: 8px;
@@ -87,7 +93,7 @@ body {
   align-items: center;
 }
 
-.language-switcher button, #theme-toggle {
+.language-switcher button, #theme-toggle, .icon-button {
   background: none;
   border: none;
   cursor: pointer;
@@ -95,6 +101,16 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  color: var(--text-color);
+}
+
+.github-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: var(--text-color);
+  padding: 5px 10px;
 }
 
 .language-switcher button {
@@ -107,10 +123,57 @@ body {
   text-decoration: underline;
 }
 
-#theme-toggle svg {
+#theme-toggle svg, .github-button svg, .icon-button svg {
   width: 22px;
   height: 22px;
   fill: var(--text-color-light);
+}
+
+/* Apps menu */
+.menu-wrapper {
+  position: relative;
+}
+
+.menu-dropdown {
+  position: absolute;
+  top: 44px; /* below controls */
+  right: 0;
+  background: var(--panel-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  min-width: 220px;
+  padding: 8px;
+  display: none;
+  z-index: 2000;
+}
+
+.menu-dropdown.open {
+  display: block;
+}
+
+.menu-dropdown ul {
+  list-style: none;
+  margin: 0;
+  padding: 4px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2px;
+}
+
+.menu-dropdown li a {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.menu-dropdown li a:hover,
+.menu-dropdown li a:focus {
+  background: var(--indicator-off-bg);
+  outline: none;
 }
 
 h1 { font-size: 2.2rem; margin: 60px 0 2rem 0; text-align: center; color: var(--text-color); font-weight: 600; }

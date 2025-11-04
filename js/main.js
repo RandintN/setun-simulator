@@ -29,6 +29,66 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- End Theme Logic ---
 
+  // --- Apps Menu (Hamburger/Grid) ---
+  const appMenuToggle = document.getElementById('app-menu-toggle');
+  const appMenu = document.getElementById('app-menu');
+
+  if (appMenuToggle && appMenu) {
+    const closeMenu = () => {
+      appMenu.classList.remove('open');
+      appMenuToggle.setAttribute('aria-expanded', 'false');
+    };
+
+    const openMenu = () => {
+      appMenu.classList.add('open');
+      appMenuToggle.setAttribute('aria-expanded', 'true');
+      // Focus first link for accessibility
+      const firstLink = appMenu.querySelector('a');
+      if (firstLink) firstLink.focus();
+    };
+
+    const toggleMenu = () => {
+      const isOpen = appMenu.classList.contains('open');
+      if (isOpen) closeMenu(); else openMenu();
+    };
+
+    appMenuToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleMenu();
+    });
+
+    // Close on outside click
+    document.addEventListener('click', (e) => {
+      if (!appMenu.contains(e.target) && e.target !== appMenuToggle) {
+        closeMenu();
+      }
+    });
+
+    // Keyboard handling
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeMenu();
+        appMenuToggle.focus();
+      }
+    });
+
+    // Trap focus inside when open (basic)
+    appMenu.addEventListener('keydown', (e) => {
+      if (e.key !== 'Tab') return;
+      const focusable = appMenu.querySelectorAll('a, button');
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    });
+  }
+
 
   const translations = {
     en: {
@@ -38,6 +98,11 @@ document.addEventListener('DOMContentLoaded', () => {
       instructionsTitle: "Instruction Set",
       usageTitle: "How to Use",
       readingTitle: "How to Read the Results",
+      menuSetunSimulator: "Setun Simulator",
+      menuTernaryClock: "Synchronous ternary clock",
+      menuHeiSanban: "HeiSanban",
+      menuBalancedTextEncoder: "Balanced ternary text encoder",
+      menuRadixConverter: "Base converter (balanced ternary)",
       ft1Label: "FT-1 (Program Input)",
       ft2Label: "FT-2 (Data Input)",
       printerLabel: "EUM-46 Printer",
@@ -168,6 +233,11 @@ document.addEventListener('DOMContentLoaded', () => {
       instructionsTitle: "Conjunto de Instruções",
       usageTitle: "Como Usar",
       readingTitle: "Como Ler os Resultados",
+      menuSetunSimulator: "Simulador Setun",
+      menuTernaryClock: "Relógio ternário síncrono",
+      menuHeiSanban: "HeiSanban",
+      menuBalancedTextEncoder: "Codificador de texto ternário balanceado",
+      menuRadixConverter: "Conversor de base (ternário balanceado)",
       ft1Label: "FT-1 (Entrada de Programa)",
       ft2Label: "FT-2 (Entrada de Dados)",
       printerLabel: "Impressora EUM-46",
